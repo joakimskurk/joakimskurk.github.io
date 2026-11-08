@@ -35,7 +35,7 @@
   --c:var(--accent);
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:100px}
 html,body{margin:0;min-height:100%;color:var(--fg);font:14px/1.55 var(--mono)}
 body{overflow-x:hidden;background:
   radial-gradient(700px 420px at 12% 8%,rgba(200,107,255,.16),transparent 65%),
@@ -55,9 +55,9 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 
 /* top bar */
 .top{position:sticky;top:0;z-index:50;background:rgba(5,4,7,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid #000;box-shadow:0 1px 0 var(--line)}
-.top .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.top .wrap{display:flex;align-items:center;gap:24px;height:76px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:0 0 auto}
-.brand img{height:36px;width:auto;display:block;transition:transform .2s}
+.brand img{height:58px;width:auto;display:block;margin:0 -6px;transition:transform .2s}
 .brand:hover img{transform:scale(1.06)}
 .nav{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
@@ -69,22 +69,20 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .sys:hover{color:var(--yellow)}
 
 /* hero */
-.hero{position:relative;padding:28px 0 18px;display:grid;grid-template-columns:440px 1fr;gap:28px;align-items:center}
-.logo-big{display:block;width:100%;max-width:460px;height:auto}
-.hero h1{margin:6px 0 0;font-size:clamp(26px,3.6vw,40px);line-height:1.05}
-.hero p{margin:14px 0 0;color:var(--dim);max-width:560px}
-.hero p a{color:var(--yellow);text-underline-offset:3px}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.stat{--c:var(--yellow);position:relative;display:flex;align-items:center;gap:14px;padding:14px 16px;text-decoration:none;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);box-shadow:3px 3px 0 color-mix(in srgb,var(--c) 70%,#000);transition:transform .15s,box-shadow .15s}
+.hero{padding:22px 0 0}
+.lead{margin:0 0 14px;color:var(--dim);font-size:13px}
+.lead a{color:var(--yellow);text-underline-offset:3px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat{--c:var(--yellow);position:relative;display:flex;align-items:center;gap:12px;padding:10px 14px;text-decoration:none;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);box-shadow:3px 3px 0 color-mix(in srgb,var(--c) 70%,#000);transition:transform .15s,box-shadow .15s}
 .stat:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--c)}
-.stat .ic{display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent)}
-.stat b{display:block;font:700 26px/1 var(--toon);color:var(--c);-webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:2px 2px 0 #000}
+.stat .ic{display:grid;place-items:center;width:32px;height:32px;border:2px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent)}
+.stat b{display:block;font:700 22px/1 var(--toon);color:var(--c);-webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:2px 2px 0 #000}
 .nav a.none,.stat.none{opacity:.45}
 .stat span{display:block;margin-top:4px;color:var(--dim);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
 
 
 /* toolbar */
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:26px;padding:12px;background:var(--panel);border:2px solid #000;outline:1px solid var(--line)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px;padding:12px;background:var(--panel);border:2px solid #000;outline:1px solid var(--line)}
 .search{flex:1 1 260px;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);padding:0 12px}
 .search:focus-within{border-color:var(--yellow)}
 .search svg.i{color:var(--mute);width:16px;height:16px}
@@ -94,7 +92,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .empty{margin-top:30px;padding:26px;text-align:center;color:var(--dim);border:1px dashed var(--line2)}
 
 /* sections */
-.sec{--c:var(--yellow);margin-top:54px}
+.sec{--c:var(--yellow);margin-top:40px}
 .sech{display:flex;align-items:center;gap:14px;margin-bottom:20px}
 .sech .ic{display:grid;place-items:center;width:44px;height:44px;color:var(--c);border:2px solid var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);box-shadow:3px 3px 0 #000}
 .sech .ic svg.i{width:22px;height:22px}
@@ -164,8 +162,7 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 .legend span{display:flex;align-items:center}
 
 @media(max-width:860px){
-  .hero{grid-template-columns:1fr;padding-top:18px}
-  .logo-big{margin:0 auto;max-width:340px}
+  .stats{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:760px){
   .wrap{padding:0 16px}
@@ -174,6 +171,10 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
   .nav{order:3;flex:1 0 100%;margin:0 -16px;padding:0 16px}
   .nav a{padding:7px 10px;border-color:var(--line)}
   .grid{grid-template-columns:1fr;gap:18px}
+  .stats{grid-template-columns:repeat(4,1fr);gap:6px}
+  .stat{padding:8px 6px;justify-content:center;text-align:center}
+  .stat .ic{display:none}
+  .stat span{font-size:9px;letter-spacing:1px}
   .sech h2{font-size:26px}
   .sech .rule{display:none}
   .sech>div{flex:1}
@@ -187,7 +188,7 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 <body>
 <header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Joakim Skurk, to the top"><img src="assets/skurk-logo.svg" alt="" width="84" height="36"></a>
+    <a class="brand" href="#top" aria-label="Joakim Skurk"><img src="assets/skurk-logo.svg" alt="" width="135" height="58"></a>
     <nav class="nav" id="nav" aria-label="Sections"></nav>
     <a class="sys" href="https://jhf.no/">jhf.no
       <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
@@ -196,15 +197,9 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 
 <div class="wrap">
   <section class="hero">
-    <div>
-      <img class="logo-big" src="assets/skurk-logo.svg" alt="Joakim Skurk" width="1000" height="430">
-    </div>
-    <div>
-      <h1 class="toon">Instruments, games &amp; tools</h1>
-      <p>Designs and ideas by Joakim's Skurk of <a href="https://jhf.no/">JHF Audio</a>. Free and open source:
-        firmware for the M-VAVE FM-1 so far, with more to come.</p>
-      <div class="stats" id="stats" style="margin-top:20px"></div>
-    </div>
+    <p class="lead">Instruments, games, tools &amp; firmware. Designs and ideas by Joakim's Skurk of
+      <a href="https://jhf.no/">JHF Audio</a>, free and open source.</p>
+    <div class="stats" id="stats"></div>
   </section>
 
   <div class="toolbar">
