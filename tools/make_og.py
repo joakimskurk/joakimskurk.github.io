@@ -85,7 +85,7 @@ def main(out):
     tx = 650
     d.text((tx, 120), "Instruments,", font=grotesk(54), fill=FG)
     d.text((tx, 180), "games & tools", font=grotesk(54), fill=FG)
-    d.text((tx, 262), "Designs and ideas by Joakim's Skurk", font=mono(20), fill=DIM)
+    d.text((tx, 262), "Designs and ideas by Joakim Skurk", font=mono(20), fill=DIM)
     d.text((tx, 290), "of JHF Audio", font=mono(20), fill=DIM)
     x = tx
     for name, col in SECTIONS:                        # the sections, as chips
