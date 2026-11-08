@@ -15,12 +15,12 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Joakim Skurk logo on a pixel splatter, the sections Audio, Games, Tools and Firmware, and the VaveHero, Star Distroyer, RoboSeq, SkurkyMello and FM-1 Clock logos">
+<meta property="og:image:alt" content="The Joakim Skurk logo, yellow on a purple, green and cyan pixel splatter, the sections Audio, Games, Tools and Firmware, and the VaveHero, Star Distroyer, RoboSeq, SkurkyMello and FM-1 Clock logos">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/skurk-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Luckiest+Guy&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#050407;--panel:#110d1a;--panel2:#1a1328;
@@ -31,7 +31,7 @@
   --stable:#45ff3a;--active:#ffd60a;--near:#2ee6ff;
   --mono:"IBM Plex Mono",Consolas,"Courier New",monospace;
   --display:"Space Grotesk","IBM Plex Mono",system-ui,sans-serif;
-  --toon:"Luckiest Guy","Space Grotesk",system-ui,sans-serif;
+  --toon:"Space Grotesk",system-ui,sans-serif;
   --c:var(--accent);
 }
 *{box-sizing:border-box}
@@ -50,15 +50,15 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
 svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-.toon{font-family:var(--toon);font-weight:400;color:var(--yellow);letter-spacing:.02em;
-  -webkit-text-stroke:2px #000;paint-order:stroke fill;text-shadow:3px 3px 0 #000,5px 5px 0 rgba(200,107,255,.55)}
+.toon{font-family:var(--toon);font-weight:700;font-style:oblique 10deg;color:var(--yellow);letter-spacing:-.01em;
+  -webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:3px 3px 0 var(--purple),5px 5px 0 #000}
 
 /* top bar */
 .top{position:sticky;top:0;z-index:50;background:rgba(5,4,7,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid #000;box-shadow:0 1px 0 var(--line)}
 .top .wrap{display:flex;align-items:center;gap:20px;height:60px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:0 0 auto}
-.brand img{height:36px;width:auto;display:block;transform:rotate(-4deg);transition:transform .2s}
-.brand:hover img{transform:rotate(0) scale(1.05)}
+.brand img{height:36px;width:auto;display:block;transition:transform .2s}
+.brand:hover img{transform:scale(1.06)}
 .nav{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
 .nav a{--c:var(--yellow);display:flex;align-items:center;gap:8px;padding:8px 12px;text-decoration:none;color:var(--dim);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s,background .15s,transform .15s}
@@ -70,11 +70,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 
 /* hero */
 .hero{position:relative;padding:28px 0 18px;display:grid;grid-template-columns:440px 1fr;gap:28px;align-items:center}
-.splat{position:absolute;inset:-30px -6% -10px -6%;width:112%;height:calc(100% + 40px);z-index:-1;image-rendering:pixelated;opacity:.45;pointer-events:none}
-.logo-big{display:block;width:100%;max-width:440px;height:auto;transform:rotate(-3deg);
-  -webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 50%,#000 62%,transparent 100%);
-          mask-image:radial-gradient(ellipse 72% 70% at 50% 50%,#000 62%,transparent 100%);
-}
+.logo-big{display:block;width:100%;max-width:460px;height:auto}
 .hero h1{margin:6px 0 0;font-size:clamp(26px,3.6vw,40px);line-height:1.05}
 .hero p{margin:14px 0 0;color:var(--dim);max-width:560px}
 .hero p a{color:var(--yellow);text-underline-offset:3px}
@@ -82,7 +78,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .stat{--c:var(--yellow);position:relative;display:flex;align-items:center;gap:14px;padding:14px 16px;text-decoration:none;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);box-shadow:3px 3px 0 color-mix(in srgb,var(--c) 70%,#000);transition:transform .15s,box-shadow .15s}
 .stat:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--c)}
 .stat .ic{display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent)}
-.stat b{display:block;font:400 26px/1 var(--toon);color:var(--c);-webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:2px 2px 0 #000}
+.stat b{display:block;font:700 26px/1 var(--toon);color:var(--c);-webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:2px 2px 0 #000}
 .nav a.none,.stat.none{opacity:.45}
 .stat span{display:block;margin-top:4px;color:var(--dim);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
 
@@ -102,7 +98,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .sech{display:flex;align-items:center;gap:14px;margin-bottom:20px}
 .sech .ic{display:grid;place-items:center;width:44px;height:44px;color:var(--c);border:2px solid var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);box-shadow:3px 3px 0 #000}
 .sech .ic svg.i{width:22px;height:22px}
-.sech h2{margin:0;font:400 28px/1 var(--toon);color:var(--c);letter-spacing:.03em;-webkit-text-stroke:2px #000;paint-order:stroke fill;text-shadow:3px 3px 0 #000}
+.sech h2{margin:0;font:700 28px/1 var(--toon);color:var(--c);letter-spacing:-.01em;font-style:oblique 10deg;-webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:3px 3px 0 #000}
 .sech p{margin:4px 0 0;color:var(--dim);font-size:12px}
 .sech>div{min-width:0}
 .sech .rule{flex:1;height:4px;background:repeating-linear-gradient(90deg,var(--c) 0 4px,transparent 4px 8px);opacity:.4}
@@ -147,7 +143,7 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 .about h2{margin:0 0 14px;font-size:28px;line-height:1}
 .about blockquote{margin:0;max-width:780px}
 .about blockquote p{margin:0 0 12px;font:500 clamp(18px,2.4vw,22px)/1.45 var(--display);color:var(--fg)}
-.about blockquote p:first-child:before{content:"“";float:left;font:400 64px/.8 var(--toon);color:var(--green);-webkit-text-stroke:2px #000;margin:4px 12px 0 0;text-shadow:3px 3px 0 #000}
+.about blockquote p:first-child:before{content:"“";float:left;font:700 64px/.8 var(--toon);color:var(--green);-webkit-text-stroke:2px #000;margin:4px 12px 0 0;text-shadow:3px 3px 0 #000}
 .about .sig{margin:14px 0 0;color:var(--mute);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
 .about .sig a{color:var(--dim);text-underline-offset:3px}
 .about .sig a:hover{color:var(--yellow)}
@@ -157,7 +153,7 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 .credit h2{margin:0 0 4px;font:600 13px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--green)}
 .credit p{margin:0;color:var(--dim);font-size:13px;max-width:640px}
 .credit p a{color:var(--fg);text-underline-offset:3px}
-.coffee{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:#ffdd00;color:#1b1309;font:400 20px/1 var(--toon);letter-spacing:.04em;text-decoration:none;border:2px solid #000;box-shadow:3px 3px 0 #000;transition:transform .15s,box-shadow .15s,background .15s}
+.coffee{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:#ffdd00;color:#1b1309;font:700 20px/1 var(--toon);letter-spacing:.04em;text-decoration:none;border:2px solid #000;box-shadow:3px 3px 0 #000;transition:transform .15s,box-shadow .15s,background .15s}
 .coffee:hover{background:#ffe74d;transform:translate(-2px,-2px);box-shadow:5px 5px 0 #000}
 
 .site-foot{margin-top:44px;border-top:2px solid #000;box-shadow:0 -1px 0 var(--line);background:rgba(5,4,7,.75)}
@@ -191,7 +187,7 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 <body>
 <header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Joakim Skurk, to the top"><img src="assets/skurk-logo.webp" alt="" width="63" height="36"></a>
+    <a class="brand" href="#top" aria-label="Joakim Skurk, to the top"><img src="assets/skurk-logo.svg" alt="" width="84" height="36"></a>
     <nav class="nav" id="nav" aria-label="Sections"></nav>
     <a class="sys" href="https://jhf.no/">jhf.no
       <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
@@ -200,9 +196,8 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 
 <div class="wrap">
   <section class="hero">
-    <canvas class="splat" id="splat" aria-hidden="true"></canvas>
     <div>
-      <img class="logo-big" src="assets/skurk-logo.webp" alt="Joakim Skurk" width="1000" height="572">
+      <img class="logo-big" src="assets/skurk-logo.svg" alt="Joakim Skurk" width="1000" height="430">
     </div>
     <div>
       <h1 class="toon">Instruments, games &amp; tools</h1>
@@ -352,27 +347,6 @@ document.getElementById("legend").innerHTML = Object.values(STATUS)
   .filter(st => PROJECTS.some(p => STATUS[p.status] === st))
   .map(st => `<span class="${st.cls}"><span class="dot"></span>${st.label}</span>`).join("");
 
-/* the pixel splatter behind the logo, as on the old logo */
-(function(){
-  const cv = document.getElementById("splat"); if (!cv) return;
-  const P = 10, cols = ["#c86bff","#9b4fd6","#45ff3a","#2fc22a","#2ee6ff","#e0a0ff"];
-  function draw(){
-    const r = cv.getBoundingClientRect(), w = Math.ceil(r.width / P), h = Math.ceil(r.height / P);
-    cv.width = w; cv.height = h;
-    const g = cv.getContext("2d"); g.clearRect(0, 0, w, h);
-    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-    const cx = w * (innerWidth > 860 ? .3 : .5), cy = h * (innerWidth > 860 ? .5 : .3), rx = w * .32, ry = h * .42;
-    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-      const dx = (x - cx) / rx, dy = (y - cy) / ry, d = Math.sqrt(dx * dx + dy * dy) + (rnd() - .5) * .5;
-      if (d < 1 && rnd() > d * .85) {
-        g.globalAlpha = (1 - d) * .55 * rnd() + .05;
-        g.fillStyle = cols[(rnd() * cols.length) | 0];
-        g.fillRect(x, y, 1, 1);
-      }
-    }
-  }
-  draw(); let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(draw, 150); });
-})();
 </script>
 </body>
 </html>

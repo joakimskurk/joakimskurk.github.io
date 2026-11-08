@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""The index's link preview (Open Graph, og.png, 1200 x 630), in the page's look: the Joakim Skurk logo on its
-pixel splatter, the sections and the projects' logos. index.html names it (og:image). The projects' logos are
+"""The index's link preview (Open Graph, og.png, 1200 x 630), in the page's look: the Joakim Skurk logo
+(assets/skurk-logo.svg, drawn by macOS's qlmanage), the sections and the projects' logos. index.html names it (og:image). The projects' logos are
 fetched from the repositories (curl).
 
   python3 tools/make_og.py [OUT.png]
@@ -8,7 +8,6 @@ fetched from the repositories (curl).
 Fonts: Space Grotesk and IBM Plex Mono (SIL Open Font License), in tools/fonts."""
 import io
 import os
-import random
 import subprocess
 import sys
 from pathlib import Path
@@ -39,6 +38,30 @@ def mono(size):
     return ImageFont.truetype(str(FONTS / "PlexMono.ttf"), size)
 
 
+def render_svg(path, width):
+    """an SVG as a picture `width` wide, on BG (qlmanage, macOS): Quick Look pads it square and on white"""
+    import re
+    import tempfile
+    src = Path(path).read_text()
+    vw, vh = map(float, re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', src).groups())
+    bg = "#%02x%02x%02x" % BG
+    pad = (vw - vh) / 2                           # a square viewBox, the logo in its middle band
+    svg_open = re.search(r'<svg[^>]*>', src).group(0)
+    sq_open = re.sub(r'viewBox="[^"]*"', f'viewBox="0 {-pad} {vw} {vw}"', svg_open)
+    sq_open = re.sub(r' width="[^"]*"', f' width="{vw}"', sq_open)
+    sq_open = re.sub(r' height="[^"]*"', f' height="{vw}"', sq_open)
+    src = src.replace(svg_open, sq_open + f'<rect x="0" y="{-pad}" width="{vw}" height="{vw}" fill="{bg}"/>', 1)
+    with tempfile.TemporaryDirectory() as t:
+        f = Path(t) / "logo.svg"
+        f.write_text(src)
+        size = round(width * 2)
+        subprocess.run(["qlmanage", "-t", "-s", str(size), "-o", t, str(f)], check=True, capture_output=True)
+        sq = Image.open(Path(t) / "logo.svg.png").convert("RGB")
+    k = sq.size[0] / vw
+    pic = sq.crop((0, round(pad * k), sq.size[0], round((pad + vh) * k)))
+    return pic.resize((width, round(width * vh / vw)), Image.LANCZOS)
+
+
 def fetch(url):
     data = subprocess.run(["curl", "-sfL", url], check=True, capture_output=True).stdout
     return Image.open(io.BytesIO(data)).convert("RGBA")
@@ -52,30 +75,10 @@ def main(out):
     for y in range(0, H, 24):
         d.line((0, y, W, y), fill=(14, 11, 20))
 
-    # the pixel splatter behind the logo, as on the page
-    rnd, P = random.Random(7), 10
-    cx, cy, rx, ry = 300, 250, 300, 210
-    cols = [PURPLE, (155, 79, 214), GREEN, (47, 194, 42), CYAN, (224, 160, 255)]
-    for y in range(0, H, P):
-        for x in range(0, 640, P):
-            dist = (((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2) ** .5 + (rnd.random() - .5) * .5
-            if dist < 1 and rnd.random() > dist * .85:
-                a = round(((1 - dist) * .45 * rnd.random() + .04) * 255)
-                d.rectangle((x, y, x + P - 1, y + P - 1), fill=rnd.choice(cols) + (a,))
-
-    # the logo, its edges faded into the dark
-    logo = Image.open(ROOT / "assets" / "skurk-logo.webp").convert("RGBA")
-    lw = 560
-    logo = logo.resize((lw, round(logo.size[1] * lw / logo.size[0])), Image.LANCZOS)
-    mask = Image.new("L", logo.size, 0)
-    md = ImageDraw.Draw(mask)
-    for k in range(40):                               # a soft oval: brighter towards the middle
-        t = k / 40
-        md.ellipse((t * lw * .28, t * logo.size[1] * .28, lw - t * lw * .28, logo.size[1] - t * logo.size[1] * .28),
-                   fill=round(min(1, t * 2.2) * 255))
-    logo.putalpha(mask)
-    logo = logo.rotate(3, resample=Image.BICUBIC, expand=True)
-    img.paste(logo, (cx - logo.size[0] // 2, cy - logo.size[1] // 2), logo)
+    # the logo (assets/skurk-logo.svg, its own splatter in it), drawn by macOS's Quick Look on the page's dark
+    logo = render_svg(ROOT / "assets" / "skurk-logo.svg", 600)
+    mask = logo.convert("L").point(lambda v: 0 if v <= 9 else 255)   # where it is the page's dark, the grid shows
+    img.paste(logo, (20, 70), mask)
     d = ImageDraw.Draw(img, "RGBA")
 
     # the words, on the right
