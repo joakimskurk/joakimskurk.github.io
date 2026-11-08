@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>joakimskurk · FM-1 apps</title>
+<meta name="description" content="Apps, games and instruments for the M-VAVE FM-1 by joakimskurk.">
+<style>
+  :root {
+    --bg: #0c0e12; --card: #151920; --line: #262c36; --text: #e8ebf0; --muted: #8a94a6; --accent: #00dd88;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f5f6f8; --card: #ffffff; --line: #dde1e7; --text: #14171c; --muted: #5d6675; --accent: #00915a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 16px 64px; }
+  header h1 { margin: 0 0 8px; font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; }
+  header p { margin: 0; color: var(--muted); max-width: 640px; }
+  header a { color: var(--accent); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+    display: flex; flex-direction: column; }
+  .art { aspect-ratio: 16 / 9; background: #06080c; display: flex; align-items: center; justify-content: center; }
+  .art img { max-width: 88%; max-height: 82%; object-fit: contain; }
+  .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .body h2 { margin: 0; font-size: 20px; }
+  .body p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
+  .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .links a { text-decoration: none; font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 8px;
+    border: 1px solid var(--line); color: var(--text); }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #04120b; }
+  .links a:hover { border-color: var(--accent); }
+  footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>joakimskurk</h1>
+    <p>Apps, games and instruments for the M-VAVE FM-1, built on
+      <a href="https://github.com/zvenson/dinghy">Dinghy</a>. None of them has been tried on a real FM-1 yet,
+      so install at your own risk, and tell us how it went.</p>
+  </header>
+
+  <div class="grid">
+    <article class="card">
+      <div class="art"><img src="https://raw.githubusercontent.com/joakimskurk/fm1vavehero/HEAD/assets/vavehero-logo.png" alt="VaveHero logo" loading="lazy"></div>
+      <div class="body">
+        <h2>VaveHero</h2>
+        <p>A rhythm game: notes slide down a highway, you play them on the white keys while the key LEDs show what
+          is coming. Two players with their own FM-1 can play against each other.</p>
+        <div class="links">
+          <a class="primary" href="https://joakimskurk.github.io/fm1vavehero/">Open</a>
+          <a href="https://github.com/joakimskurk/fm1vavehero">Source</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="art"><img src="https://raw.githubusercontent.com/joakimskurk/fm1stardistroyer/HEAD/docs/readme/banner.png" alt="Star Distroyer banner" loading="lazy"></div>
+      <div class="body">
+        <h2>Star Distroyer</h2>
+        <p>A starship FM synth: four banks of oscillators on an X/Y nav field, a morphing resonator, multiband
+          destruction, delay and room.</p>
+        <div class="links">
+          <a class="primary" href="https://joakimskurk.github.io/fm1stardistroyer/">Open</a>
+          <a href="https://github.com/joakimskurk/fm1stardistroyer">Source</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="art"><img src="https://raw.githubusercontent.com/joakimskurk/fm1clock/HEAD/docs/screens/pendulum.gif" alt="The FM-1 Clock's pendulum wall clock" loading="lazy"></div>
+      <div class="body">
+        <h2>FM-1 Clock</h2>
+        <p>A pendulum wall clock whose gong is rebuilt as an FM synth of some four hundred operators, and a carved
+          cuckoo clock whose bird calls the hours.</p>
+        <div class="links">
+          <a class="primary" href="https://joakimskurk.github.io/fm1clock/">Open</a>
+          <a href="https://github.com/joakimskurk/fm1clock">Source</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="art"><img src="https://raw.githubusercontent.com/joakimskurk/fm1roboseq/HEAD/assets/roboseq-logo.svg" alt="RoboSeq logo" loading="lazy"></div>
+      <div class="body">
+        <h2>RoboSeq</h2>
+        <p>A sequencer that is a board game: two robots walk a 5×5 board of conveyor belts, zap rails and rotators,
+          and where they go is the music. Steer them yourself, or battle a friend on the beat.</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/joakimskurk/fm1roboseq">Source</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="art"><img src="https://raw.githubusercontent.com/joakimskurk/fm1mello/HEAD/docs/logo.png" alt="SkurkyMello logo" loading="lazy"></div>
+      <div class="body">
+        <h2>SkurkyMello</h2>
+        <p>A generative step sequencer and synth: a sixteen-step melody at its heart, with a bass, chords, a
+          four-voice drum kit and a sample layer around it.</p>
+        <div class="links">
+          <a class="primary" href="https://github.com/joakimskurk/fm1mello">Source</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <footer>
+    <a href="https://github.com/joakimskurk">github.com/joakimskurk</a>
+  </footer>
+</main>
+</body>
+</html>
