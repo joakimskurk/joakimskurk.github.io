@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Joakim Skurk · Projects</title>
-<meta name="description" content="Instruments, games and tools by Joakim Skurk of JHF Audio: firmware for the M-VAVE FM-1 and more.">
+<meta name="description" content="Instruments, games and tools by Joakim Skurk / JHF Audio: firmware for the M-VAVE FM-1 and more.">
 <meta name="theme-color" content="#050407">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Skurk">
 <meta property="og:title" content="Joakim Skurk: instruments, games and tools">
-<meta property="og:description" content="Designs and ideas by Joakim Skurk of JHF Audio. Firmware for the M-VAVE FM-1 and more, free and open source.">
+<meta property="og:description" content="Designs and ideas by Joakim Skurk / JHF Audio. Firmware for the M-VAVE FM-1 and more, free and open source.">
 <meta property="og:url" content="https://joakimskurk.github.io/">
 <meta property="og:image" content="https://joakimskurk.github.io/og.png">
 <meta property="og:image:type" content="image/png">
@@ -69,9 +69,7 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .sys:hover{color:var(--yellow)}
 
 /* hero */
-.hero{padding:22px 0 0}
-.lead{margin:0 0 14px;color:var(--dim);font-size:13px}
-.lead a{color:var(--yellow);text-underline-offset:3px}
+.hero{padding:20px 0 0}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .stat{--c:var(--yellow);position:relative;display:flex;align-items:center;gap:12px;padding:10px 14px;text-decoration:none;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);box-shadow:3px 3px 0 color-mix(in srgb,var(--c) 70%,#000);transition:transform .15s,box-shadow .15s}
 .stat:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--c)}
@@ -137,20 +135,21 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 .s-stable{color:var(--stable)}.s-active{color:var(--active)}.s-near{color:var(--near)}
 
 /* about */
-.about{margin-top:64px;position:relative;padding:30px 30px 26px;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);box-shadow:4px 4px 0 var(--purple)}
-.about h2{margin:0 0 14px;font-size:28px;line-height:1}
-.about blockquote{margin:0;max-width:780px}
-.about blockquote p{margin:0 0 12px;font:500 clamp(18px,2.4vw,22px)/1.45 var(--display);color:var(--fg)}
-.about blockquote p:first-child:before{content:"“";float:left;font:700 64px/.8 var(--toon);color:var(--green);-webkit-text-stroke:2px #000;margin:4px 12px 0 0;text-shadow:3px 3px 0 #000}
-.about .sig{margin:14px 0 0;color:var(--mute);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.about{margin-top:64px;position:relative;padding:24px 26px 22px;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);box-shadow:4px 4px 0 var(--purple)}
+.about h2{margin:0 0 16px;font-size:24px;line-height:1}
+.about blockquote{margin:0;max-width:680px;padding-left:16px;border-left:3px solid var(--green)}
+.about blockquote p{margin:0 0 10px;font:500 16px/1.6 var(--display);color:var(--fg)}
+.about blockquote p:last-child{margin-bottom:0}
+.about .sig{margin:14px 0 0 19px;color:var(--mute);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
 .about .sig a{color:var(--dim);text-underline-offset:3px}
 .about .sig a:hover{color:var(--yellow)}
 
 /* credit */
-.credit{margin-top:26px;padding:22px;border:2px dashed var(--line2);background:rgba(17,13,26,.6);display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.credit{margin-top:22px;padding:18px 22px;border:2px dashed var(--line2);background:rgba(17,13,26,.6)}
 .credit h2{margin:0 0 4px;font:600 13px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--green)}
-.credit p{margin:0;color:var(--dim);font-size:13px;max-width:640px}
+.credit p{margin:0;color:var(--dim);font-size:13px;max-width:760px}
 .credit p a{color:var(--fg);text-underline-offset:3px}
+.coffee-row{margin:26px 0 0;text-align:center}
 .coffee{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:#ffdd00;color:#1b1309;font:700 20px/1 var(--toon);letter-spacing:.04em;text-decoration:none;border:2px solid #000;box-shadow:3px 3px 0 #000;transition:transform .15s,box-shadow .15s,background .15s}
 .coffee:hover{background:#ffe74d;transform:translate(-2px,-2px);box-shadow:5px 5px 0 #000}
 
@@ -197,8 +196,6 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
 
 <div class="wrap">
   <section class="hero">
-    <p class="lead">Instruments, games, tools &amp; firmware. Designs and ideas by Joakim Skurk of
-      <a href="https://jhf.no/">JHF Audio</a>, free and open source.</p>
     <div class="stats" id="stats"></div>
   </section>
 
@@ -219,18 +216,18 @@ svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
       <p>I'm a musician, and I never had the time or the headspace to learn to code. Vibe coding changed that: now I
         can finally turn those ideas into things that actually work.</p>
     </blockquote>
-    <p class="sig">Joakim Skurk · <a href="https://jhf.no/">JHF Audio</a></p>
+    <p class="sig">Joakim Skurk / <a href="https://jhf.no/">JHF Audio</a></p>
   </section>
 
   <section class="credit" aria-labelledby="credit-h">
     <div>
       <h2 id="credit-h">Made by Joakim Skurk</h2>
-      <p>Designs and ideas by Joakim Skurk of <a href="https://jhf.no/">JHF Audio</a>. The FM-1 apps are built on
+      <p>Designs and ideas by Joakim Skurk / <a href="https://jhf.no/">JHF Audio</a>. The FM-1 apps are built on
         <a href="https://github.com/zvenson/dinghy">Dinghy</a>. "M-VAVE" and "FM-1" belong to their owners; these are
         fan projects, not official M-VAVE products.</p>
     </div>
-    <a class="coffee" href="https://buymeacoffee.com/skurk" target="_blank" rel="noopener">☕ Buy me a coffee</a>
   </section>
+  <p class="coffee-row"><a class="coffee" href="https://buymeacoffee.com/skurk" target="_blank" rel="noopener">☕ Buy me a coffee</a></p>
 </div>
 
 <footer class="site-foot">
