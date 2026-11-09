@@ -23,6 +23,7 @@ RAW = "https://raw.githubusercontent.com/joakimskurk"
 LOGOS = [f"{RAW}/fm1vavehero/HEAD/assets/vavehero-logo.png",
          f"{RAW}/fm1stardistroyer/HEAD/docs/readme/banner.png",
          f"{RAW}/fm1roboseq/HEAD/assets/roboseq-logo.png",
+         f"{RAW}/fm1orbitrix/HEAD/assets/logo.png",
          f"{RAW}/fm1mello/HEAD/docs/logo.png",
          f"{RAW}/fm1clock/HEAD/docs/screens/sign.png"]
 SECTIONS = [("AUDIO", GREEN), ("GAMES", PURPLE), ("TOOLS", CYAN), ("FIRMWARE", YELLOW)]
