@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joakim Skurk · Projects</title>
+<meta name="description" content="Instruments, games and tools by Joakim Skurk / JHF Audio: firmware for the M-VAVE FM-1 and more.">
+<meta name="theme-color" content="#050407">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Skurk">
+<meta property="og:title" content="Joakim Skurk: instruments, games and tools">
+<meta property="og:description" content="Designs and ideas by Joakim Skurk / JHF Audio. Firmware for the M-VAVE FM-1 and more, free and open source.">
+<meta property="og:url" content="https://joakimskurk.github.io/">
+<meta property="og:image" content="https://joakimskurk.github.io/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Joakim Skurk logo, yellow on a purple, green and cyan pixel splatter, the sections Audio, Games, Tools and Firmware, and the VaveHero, Star Distroyer, RoboSeq, SkurkyMello and FM-1 Clock logos">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/skurk-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050407;--panel:#110d1a;--panel2:#1a1328;
+  --line:#2c2342;--line2:#463868;
+  --fg:#fff8e0;--dim:#cfc3ea;--mute:#8c80ad;
+  --yellow:#ffd60a;--yellow2:#ffb000;--purple:#c86bff;--green:#45ff3a;--cyan:#2ee6ff;
+  --accent:var(--yellow);
+  --stable:#45ff3a;--active:#ffd60a;--near:#2ee6ff;
+  --mono:"IBM Plex Mono",Consolas,"Courier New",monospace;
+  --display:"Space Grotesk","IBM Plex Mono",system-ui,sans-serif;
+  --toon:"Space Grotesk",system-ui,sans-serif;
+  --c:var(--accent);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:100px}
+html,body{margin:0;min-height:100%;color:var(--fg);font:14px/1.55 var(--mono)}
+body{overflow-x:hidden;background:
+  radial-gradient(700px 420px at 12% 8%,rgba(200,107,255,.16),transparent 65%),
+  radial-gradient(700px 460px at 92% 4%,rgba(69,255,58,.10),transparent 60%),
+  radial-gradient(600px 400px at 60% 60%,rgba(46,230,255,.05),transparent 60%),
+  linear-gradient(rgba(200,107,255,.04) 1px,transparent 1px) 0 0/24px 24px,
+  linear-gradient(90deg,rgba(200,107,255,.04) 1px,transparent 1px) 0 0/24px 24px,
+  var(--bg)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
+  background:repeating-linear-gradient(to bottom,transparent 0,transparent 3px,rgba(0,0,0,.10) 4px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.toon{font-family:var(--toon);font-weight:700;font-style:oblique 10deg;color:var(--yellow);letter-spacing:-.01em;
+  -webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:3px 3px 0 var(--purple),5px 5px 0 #000}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:50;background:rgba(5,4,7,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid #000;box-shadow:0 1px 0 var(--line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:76px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:0 0 auto}
+.brand img{height:58px;width:auto;display:block;margin:0 -6px;transition:transform .2s}
+.brand:hover img{transform:scale(1.06)}
+.nav{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{--c:var(--yellow);display:flex;align-items:center;gap:8px;padding:8px 12px;text-decoration:none;color:var(--dim);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s,background .15s,transform .15s}
+.nav a svg.i{width:15px;height:15px;color:var(--c)}
+.nav a small{font-size:10px;color:var(--mute);letter-spacing:0}
+.nav a:hover{color:var(--fg);border-color:var(--c);background:color-mix(in srgb,var(--c) 10%,transparent)}
+.sys{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;flex:0 0 auto;text-decoration:none}
+.sys:hover{color:var(--yellow)}
+
+/* hero */
+.hero{padding:20px 0 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat{--c:var(--yellow);position:relative;display:flex;align-items:center;gap:12px;padding:10px 14px;text-decoration:none;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);box-shadow:3px 3px 0 color-mix(in srgb,var(--c) 70%,#000);transition:transform .15s,box-shadow .15s}
+.stat:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--c)}
+.stat .ic{display:grid;place-items:center;width:32px;height:32px;border:2px solid var(--c);color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent)}
+.stat b{display:block;font:700 22px/1 var(--toon);color:var(--c);-webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:2px 2px 0 #000}
+.nav a.none,.stat.none{opacity:.45}
+.stat span{display:block;margin-top:4px;color:var(--dim);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+
+
+/* toolbar */
+.notice{margin-top:14px;padding:12px 14px;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);border-left:4px solid var(--near);font-size:14px;line-height:1.55;color:var(--dim)}
+.notice b{color:var(--near);font-family:var(--mono,inherit);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-right:6px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px;padding:12px;background:var(--panel);border:2px solid #000;outline:1px solid var(--line)}
+.search{flex:1 1 260px;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);padding:0 12px}
+.search:focus-within{border-color:var(--yellow)}
+.search svg.i{color:var(--mute);width:16px;height:16px}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--fg);font:inherit;padding:10px 0;outline:none}
+.search input::placeholder{color:var(--mute)}
+.search kbd{font:inherit;font-size:10px;color:var(--mute);border:1px solid var(--line2);padding:1px 6px}
+.empty{margin-top:30px;padding:26px;text-align:center;color:var(--dim);border:1px dashed var(--line2)}
+
+/* sections */
+.sec{--c:var(--yellow);margin-top:40px}
+.sech{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.sech .ic{display:grid;place-items:center;width:44px;height:44px;color:var(--c);border:2px solid var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);box-shadow:3px 3px 0 #000}
+.sech .ic svg.i{width:22px;height:22px}
+.sech h2{margin:0;font:700 28px/1 var(--toon);color:var(--c);letter-spacing:-.01em;font-style:oblique 10deg;-webkit-text-stroke:1.5px #000;paint-order:stroke fill;text-shadow:3px 3px 0 #000}
+.sech p{margin:4px 0 0;color:var(--dim);font-size:12px}
+.sech>div{min-width:0}
+.sech .rule{flex:1;height:4px;background:repeating-linear-gradient(90deg,var(--c) 0 4px,transparent 4px 8px);opacity:.4}
+.group{display:flex;align-items:center;gap:10px;margin:22px 0 14px;color:var(--c);font-size:12px;letter-spacing:2.5px;text-transform:uppercase}
+.group:before{content:"";width:8px;height:8px;background:var(--c);border:1.5px solid #000;transform:rotate(45deg)}
+.group:after{content:"";flex:1;height:1px;background:var(--line)}
+.group:first-child{margin-top:0}
+.sech .count{font-size:11px;color:var(--mute);letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{--c:var(--yellow);position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--panel2),var(--panel));border:2px solid #000;outline:1px solid var(--line);box-shadow:3px 3px 0 color-mix(in srgb,var(--c) 55%,#000);transition:transform .15s,box-shadow .15s}
+.card:hover,.card:focus-within{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--c);outline-color:color-mix(in srgb,var(--c) 60%,transparent)}
+.card:before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--c);border-left:2px solid var(--c);z-index:3;pointer-events:none}
+.art{aspect-ratio:2/1;display:grid;place-items:center;background:#000;border-bottom:2px solid #000;overflow:hidden;position:relative}
+.art:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 120%,color-mix(in srgb,var(--c) 22%,transparent),transparent 60%);pointer-events:none}
+.art img{max-width:84%;max-height:78%;object-fit:contain;transition:transform .25s}
+.card:hover .art img{transform:scale(1.03)}
+.body{display:flex;flex-direction:column;gap:8px;padding:14px 16px 14px;flex:1}
+.hit{color:inherit;text-decoration:none;outline:none}
+.hit:after{content:"";position:absolute;inset:0;z-index:1}
+.meta{display:flex;align-items:center;gap:8px;color:var(--c);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;min-height:18px}
+.meta svg.i{width:14px;height:14px}
+.meta .sp{flex:1}
+.tag{color:var(--dim);background:transparent;border:1px solid var(--line2);padding:1px 7px;letter-spacing:.5px;text-transform:none;font-size:10px;font-weight:500}
+.card h3{margin:0;font:700 18px/1.25 var(--display);letter-spacing:.2px;color:var(--fg)}
+.desc{margin:0;color:var(--dim);font-size:12.5px;line-height:1.55;flex:1}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 10px;padding-top:10px;border-top:2px dotted var(--line2);font-size:10.5px;letter-spacing:1.3px;text-transform:uppercase}
+.acts{display:flex;align-items:center;gap:12px}
+.gh{position:relative;z-index:2;display:flex;align-items:center;gap:6px;color:var(--dim);text-decoration:none;border:1px solid var(--line2);padding:3px 8px;transition:color .15s,border-color .15s}
+.gh:hover,.gh:focus-visible{color:var(--fg);border-color:var(--fg)}
+svg.ghi{width:13px;height:13px;fill:currentColor;flex:0 0 auto}
+.go{color:var(--mute);transition:color .15s;display:flex;align-items:center;gap:6px}
+.card:hover .go{color:var(--c)}
+.go svg{transition:transform .15s;width:14px;height:14px}
+.card:hover .go svg{transform:translateX(4px)}
+.state{display:flex;align-items:center;white-space:nowrap}
+.dot{display:inline-block;width:7px;height:7px;background:currentColor;margin-right:7px;flex:0 0 auto}
+.s-stable{color:var(--stable)}.s-active{color:var(--active)}.s-near{color:var(--near)}
+
+/* about */
+.about{margin-top:64px;position:relative;padding:24px 26px 22px;background:var(--panel);border:2px solid #000;outline:1px solid var(--line);box-shadow:4px 4px 0 var(--purple)}
+.about h2{margin:0 0 16px;font-size:24px;line-height:1}
+.about blockquote{margin:0;max-width:680px;padding-left:16px;border-left:3px solid var(--green)}
+.about blockquote p{margin:0 0 10px;font:500 16px/1.6 var(--display);color:var(--fg)}
+.about blockquote p:last-child{margin-bottom:0}
+.about .sig{margin:14px 0 0 19px;color:var(--mute);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.about .sig a{color:var(--dim);text-underline-offset:3px}
+.about .sig a:hover{color:var(--yellow)}
+
+/* credit */
+.credit{margin-top:22px;padding:18px 22px;border:2px dashed var(--line2);background:rgba(17,13,26,.6)}
+.credit h2{margin:0 0 4px;font:600 13px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--green)}
+.credit p{margin:0;color:var(--dim);font-size:13px;max-width:760px}
+.credit p a{color:var(--fg);text-underline-offset:3px}
+.coffee-row{margin:26px 0 0;text-align:center}
+.coffee{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:#ffdd00;color:#1b1309;font:700 20px/1 var(--toon);letter-spacing:.04em;text-decoration:none;border:2px solid #000;box-shadow:3px 3px 0 #000;transition:transform .15s,box-shadow .15s,background .15s}
+.coffee:hover{background:#ffe74d;transform:translate(-2px,-2px);box-shadow:5px 5px 0 #000}
+
+.site-foot{margin-top:44px;border-top:2px solid #000;box-shadow:0 -1px 0 var(--line);background:rgba(5,4,7,.75)}
+.site-foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 24px 28px;color:var(--mute);font-size:11px;letter-spacing:1.3px;text-transform:uppercase}
+.site-foot a{text-decoration:none;color:var(--dim)}
+.site-foot a:hover{color:var(--yellow)}
+.legend{display:flex;gap:16px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center}
+
+@media(max-width:860px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .wrap{padding:0 16px}
+  .top .wrap{flex-wrap:wrap;height:auto;padding-top:10px;padding-bottom:8px;gap:8px 14px}
+  .brand{flex:1}
+  .nav{order:3;flex:1 0 100%;margin:0 -16px;padding:0 16px}
+  .nav a{padding:7px 10px;border-color:var(--line)}
+  .grid{grid-template-columns:1fr;gap:18px}
+  .stats{grid-template-columns:repeat(4,1fr);gap:6px}
+  .stat{padding:8px 6px;justify-content:center;text-align:center}
+  .stat .ic{display:none}
+  .stat span{font-size:9px;letter-spacing:1px}
+  .sech h2{font-size:26px}
+  .sech .rule{display:none}
+  .sech>div{flex:1}
+  .sech .count{align-self:flex-start;padding-top:4px}
+  .about{padding:22px 18px 20px}
+  .site-foot .wrap{padding:18px 16px 28px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Joakim Skurk"><img src="assets/skurk-logo.svg" alt="" width="135" height="58"></a>
+    <nav class="nav" id="nav" aria-label="Sections"></nav>
+    <a class="sys" href="https://jhf.no/">jhf.no
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <div class="toolbar">
+    <label class="search">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search name, description, device…" autocomplete="off" spellcheck="false" aria-label="Search projects">
+      <kbd title="Press / to search">/</kbd>
+    </label>
+  </div>
+
+  <p class="notice" role="note"><b>Heads-up</b>None of these projects has been tested on a real device yet. They run in the browser and on the computer, and they pass their tests, but the hardware may still behave differently. Install them at your own risk, and expect rough edges.</p>
+
+  <main id="main"></main>
+
+  <section class="about" id="about" aria-labelledby="about-h">
+    <h2 id="about-h" class="toon">About</h2>
+    <blockquote>
+      <p>I have countless ideas. Some I've kept in my head for years, others I've written down or sketched on paper. I never had the time or headspace to learn how to code, but vibe coding changed that. Now, I can finally turn my ideas into things that actually work. The vision is entirely mine, and my projects are built strictly on my instructions.</p>
+    </blockquote>
+    <p class="sig">Joakim Skurk / <a href="https://jhf.no/">JHF Audio</a></p>
+  </section>
+
+  <section class="credit" aria-labelledby="credit-h">
+    <div>
+      <h2 id="credit-h">Made by Joakim Skurk</h2>
+      <p>Designs and ideas by Joakim Skurk / <a href="https://jhf.no/">JHF Audio</a>. The FM-1 apps are built on
+        <a href="https://github.com/zvenson/dinghy">Dinghy</a>. "M-VAVE" and "FM-1" belong to their owners; these are
+        fan projects, not official M-VAVE products.</p>
+    </div>
+  </section>
+  <p class="coffee-row"><a class="coffee" href="https://buymeacoffee.com/skurk" target="_blank" rel="noopener">☕ Buy me a coffee</a></p>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="legend" id="legend"></div>
+    <div><a href="https://github.com/joakimskurk">github.com/joakimskurk</a> · <a href="https://jhf.no/">jhf.no</a> · <a href="#top">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* To add a project: add one line to PROJECTS. `section` is one of SECTIONS; `kind` says what it is (Synth,
+   Game, …); `url` is the live page (omit it if there is none yet), `repo` the GitHub repo, `img` an optional logo or
+   banner. Firmware is grouped by `device`. */
+const SECTIONS = [   /* the same sections as jhf.no */
+  {id:"audio",    label:"Audio",    color:"#45ff3a", icon:"audio",    blurb:"Instruments, sequencers & sound experiments"},
+  {id:"games",    label:"Games",    color:"#c86bff", icon:"games",    blurb:"Small browser games & simulations"},
+  {id:"tools",    label:"Tools",    color:"#2ee6ff", icon:"tools",    blurb:"Practical everyday utilities"},
+  {id:"firmware", label:"Firmware", color:"#ffd60a", icon:"firmware", blurb:"Custom firmware for hardware devices, grouped by device"}
+];
+const DEVICES = {"FM-1":"M-VAVE FM-1"};   /* a device's full name for its group heading */
+const STATUS = {
+  stable:{label:"Stable",          cls:"s-stable"},
+  active:{label:"In development",  cls:"s-active"},
+  near:  {label:"Not yet on hardware", cls:"s-near"}
+};
+const RAW = "https://raw.githubusercontent.com/joakimskurk";
+const PROJECTS = [
+  {name:"Star Distroyer", section:"firmware", kind:"Synth", device:"FM-1", status:"near",
+   desc:"A starship FM synth: four banks of oscillators on an X/Y nav field, a morphing resonator, multiband destruction, delay and room.",
+   url:"https://joakimskurk.github.io/fm1stardistroyer/", repo:"fm1stardistroyer", img:`${RAW}/fm1stardistroyer/HEAD/docs/readme/banner.png`},
+  {name:"SkurkyMello", section:"firmware", kind:"Sequencer · Synth", device:"FM-1", status:"near",
+   desc:"A generative step sequencer and synth: a sixteen-step melody at its heart, with a bass, chords, a four-voice drum kit and a sample layer around it.",
+   url:"https://joakimskurk.github.io/fm1mello/", repo:"fm1mello", img:`${RAW}/fm1mello/HEAD/docs/logo.png`},
+  {name:"RoboSeq", section:"firmware", kind:"Sequencer · Game", device:"FM-1", status:"near",
+   desc:"A sequencer that is a board game: two robots walk a 5×5 board of conveyor belts, zap rails and rotators, and where they go is the music.",
+   url:"https://joakimskurk.github.io/fm1roboseq/", repo:"fm1roboseq", img:`${RAW}/fm1roboseq/HEAD/assets/roboseq-logo.svg`},
+  {name:"VaveHero", section:"firmware", kind:"Rhythm game", device:"FM-1", status:"near",
+   desc:"A rhythm game: notes slide down a neon highway and you play them on the white keys. Two players with their own FM-1 can play each other.",
+   url:"https://joakimskurk.github.io/fm1vavehero/", repo:"fm1vavehero", img:`${RAW}/fm1vavehero/HEAD/assets/vavehero-logo.png`},
+  {name:"FM-1 Clock", section:"firmware", kind:"Clock", device:"FM-1", status:"near",
+   desc:"A pendulum wall clock whose gong is an FM synth of some four hundred operators, and a carved cuckoo clock whose bird calls the hours.",
+   url:"https://joakimskurk.github.io/fm1clock/", repo:"fm1clock", img:`${RAW}/fm1clock/HEAD/docs/screens/sign.png`}
+];
+
+const ICONS = {
+  all:     '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',
+  audio:   '<path d="M2 12h3l2.5-6 4 13 3-10 2 5H22"/>',
+  games:   '<rect x="2" y="7" width="20" height="11" rx="3"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="15.5" cy="11.5" r=".8"/><circle cx="18" cy="14" r=".8"/>',
+  tools:   '<path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/>',
+  firmware:'<rect x="6" y="6" width="12" height="12" rx="1"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/>',
+  arrow:   '<path d="M5 12h14M13 6l6 6-6 6"/>'
+};
+const GH = '<svg class="ghi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>';
+const icon = k => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${ICONS[k]||ICONS.all}</svg>`;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const live = SECTIONS.filter(s => PROJECTS.some(p => p.section === s.id));
+const nav = document.getElementById("nav"), stats = document.getElementById("stats"), main = document.getElementById("main");
+
+const count = id => PROJECTS.filter(p => p.section === id).length;
+nav.innerHTML = SECTIONS.map(s => `<a href="#${s.id}" style="--c:${s.color}"${count(s.id) ? "" : ' class="none"'}>${icon(s.icon)}${esc(s.label)} <small>${count(s.id)}</small></a>`).join("")
+  + `<a href="#about">About</a>`;
+stats.innerHTML = SECTIONS.map(s => `<a class="stat${count(s.id) ? "" : " none"}" href="#${s.id}" style="--c:${s.color}"><span class="ic">${icon(s.icon)}</span><div><b>${count(s.id)}</b><span>${esc(s.label)}</span></div></a>`).join("");
+
+function render(){
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const hit = p => !q || [p.name, p.desc, p.kind, p.device, DEVICES[p.device]].filter(Boolean).join(" ").toLowerCase().includes(q);
+  let shown = 0;
+  main.innerHTML = live.map(s => {
+    const items = PROJECTS.filter(p => p.section === s.id && hit(p));
+    if (!items.length) return "";
+    shown += items.length;
+    let body;
+    if (items.some(p => p.device)) {               /* grouped by device, the rest after */
+      const groups = [...new Set(items.map(p => p.device || ""))];
+      body = groups.map(d => `${d ? `<div class="group">${esc(DEVICES[d] || d)}</div>` : `<div class="group">Other</div>`}
+        <div class="grid">${items.filter(p => (p.device || "") === d).map(p => card(p, s)).join("")}</div>`).join("");
+    } else body = `<div class="grid">${items.map(p => card(p, s)).join("")}</div>`;
+    return `<section class="sec" id="${s.id}" style="--c:${s.color}">
+      <div class="sech"><span class="ic">${icon(s.icon)}</span><div><h2>${esc(s.label)}</h2><p>${esc(s.blurb)}</p></div>
+        <span class="rule"></span><span class="count">${items.length} project${items.length === 1 ? "" : "s"}</span></div>
+      ${body}</section>`;
+  }).join("") || `<div class="empty">Nothing matches “${esc(q)}”.</div>`;
+}
+render();
+document.getElementById("q").addEventListener("input", render);
+addEventListener("keydown", e => { if (e.key === "/" && document.activeElement.tagName !== "INPUT") { e.preventDefault(); document.getElementById("q").focus(); } });
+
+function card(p, s){
+  const st = STATUS[p.status] || STATUS.active;
+  const repo = p.repo ? `https://github.com/joakimskurk/${p.repo}` : "";
+  const href = p.url || repo;
+  return `<article class="card" style="--c:${s.color}">
+    ${p.img ? `<div class="art"><img src="${esc(p.img)}" alt="${esc(p.name)} logo" loading="lazy"></div>` : ""}
+    <div class="body">
+      <div class="meta">${icon(s.icon)}${esc(p.kind || s.label)}<span class="sp"></span>${p.device ? `<span class="tag">${esc(p.device)}</span>` : ""}</div>
+      <h3><a class="hit" href="${esc(href)}">${esc(p.name)}</a></h3>
+      <p class="desc">${esc(p.desc)}</p>
+      <div class="foot">
+        <span class="state ${st.cls}"><span class="dot"></span>${st.label}</span>
+        <span class="acts">${repo ? `<a class="gh" href="${repo}" aria-label="${esc(p.name)} on GitHub">${GH}GitHub</a>` : ""}
+          <span class="go">${p.url ? "Open" : "Source"}${icon("arrow")}</span></span>
+      </div>
+    </div></article>`;
+}
+
+document.getElementById("legend").innerHTML = Object.values(STATUS)
+  .filter(st => PROJECTS.some(p => STATUS[p.status] === st))
+  .map(st => `<span class="${st.cls}"><span class="dot"></span>${st.label}</span>`).join("");
+
+</script>
+</body>
+</html>
